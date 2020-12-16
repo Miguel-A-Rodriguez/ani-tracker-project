@@ -3,11 +3,8 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-indent */
-
-import './App.css';
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
-import Title from './Components/Title/Title';
 
 const query = gql`
  {
@@ -34,24 +31,23 @@ user {
 
 },
 `;
-function App() {
+function Title() {
   const { loading, data } = useQuery(query);
   if (loading) return <p>Loading Anime ...</p>;
   console.log(data);
-  let animeProgress = data.MediaListCollection.lists[0].entries;
-  console.log(animeProgress);
+  let animeTitle = data.MediaListCollection.lists[0].entries;
+  console.log(animeTitle);
 
-  animeProgress = animeProgress.map((item) => <div className="imgs"><img key={item.id} src={item.media.bannerImage} alt="broken" /></div>);
 
   return (
-    <>
-    <section>
-      <h1>Welcome to ani-chart</h1>
-      <Title />
-       <div>{animeProgress}</div>
-       </section>
+     <>
+       <div>
+        {animeTitle && animeTitle.map(item => (
+          <div key={item.id}>{item.media.title.english}</div>
+        ))}
+       </div>
     </>
     
   );
 }
-export default App;
+export default Title;
