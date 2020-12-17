@@ -20,14 +20,10 @@ color: white;
     margin-left: 10px;
     margin-top: 10px;
 }
- .ani-container {
+ .ani-images {
     display: grid;
-    color: black;
-    margin-top: 10rem;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    grid-gap: 5rem;
-    text-align: center;
+    grid-template-rows: 1fr 1fr;
+    height: 200%;
   }
 .ani-container .ani a {
     color: black;
@@ -38,5 +34,5 @@ color: white;
     margin-top: 10px;
 }
 .imgs img {
-    width: 40%;
+    width: 20%;
 }

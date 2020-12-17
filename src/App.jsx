@@ -8,6 +8,7 @@ import './App.css';
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
 import Title from './Components/Title/Title';
+import Progress from './Components/Progress/Progress'
 
 const query = gql`
  {
@@ -38,17 +39,18 @@ function App() {
   const { loading, data } = useQuery(query);
   if (loading) return <p>Loading Anime ...</p>;
   console.log(data);
-  let animeProgress = data.MediaListCollection.lists[0].entries;
-  console.log(animeProgress);
+  let animeImages = data.MediaListCollection.lists[0].entries;
+  console.log(animeImages);
 
-  animeProgress = animeProgress.map((item) => <div className="imgs"><img key={item.id} src={item.media.bannerImage} alt="broken" /></div>);
+  animeImages = animeImages.map((item) => <div className="imgs"><img key={item.id} src={item.media.bannerImage} alt="broken" /></div>);
 
   return (
     <>
     <section>
       <h1>Welcome to ani-chart</h1>
-      <Title />
-       <div>{animeProgress}</div>
+      <div className="ani-images">{animeImages}</div>
+      <div className="titles"><Title /></div>
+      <div><Progress/></div>
        </section>
     </>
     
