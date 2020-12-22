@@ -7,8 +7,8 @@
 import './App.css';
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
-import Title from './Components/Title/Title';
-import Progress from './Components/Progress/Progress'
+
+
 
 const query = gql`
  {
@@ -43,14 +43,42 @@ function App() {
   console.log(animeImages);
 
   animeImages = animeImages.map((item) => <div className="imgs"><img key={item.id} src={item.media.bannerImage} alt="broken" /></div>);
+  //////// Titles //////
+  
+  let animeTitles = data.MediaListCollection.lists[0].entries;
+    console.log(animeTitles);
+    animeTitles = animeTitles.map((item) => <div className="Titles" key={item.id}> {item.media.title.english}</div>);    
+    
+  //// Progress ////  
+  let animeProgress = data.MediaListCollection.lists[0].entries;
+  console.log(animeProgress);
+  animeProgress = animeProgress.map((item) => <div className="Progress" key={item.id}> {item.progress}</div>);
 
   return (
     <>
     <section>
-      <h1>Welcome to ani-chart</h1>
-      <div className="ani-images">{animeImages}</div>
-      <div className="titles"><Title /></div>
-      <div><Progress/></div>
+      <h1 className="header-container">Welcome to ani-chart</h1>
+      <div className="ani-images">{animeImages[0]}</div>
+      <span>
+      <div classNme="ani-titles">{animeTitles[0]}</div>
+      <div className="ani-progress">{animeProgress[0]}</div>
+      </span>
+      <div className="ani-images">{animeImages[1]}</div>
+      <span>
+      <div classNme="ani-titles">{animeTitles[1]}</div>
+      <div className="ani-progress">{animeProgress[1]}</div>
+      </span>
+      <div className="ani-images">{animeImages[2]}</div>
+      <span>
+      <div classNme="ani-titles">{animeTitles[2]}</div>
+      <div className="ani-progress">{animeProgress[2]}</div>
+      </span>
+
+      <div className="ani-images">{animeImages[3]}</div>
+      <span>
+      <div classNme="ani-titles">{animeTitles[3]}</div>
+      <div className="ani-progress">{animeProgress[3]}</div>
+      </span>
        </section>
     </>
     
