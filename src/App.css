@@ -9,9 +9,9 @@ background-color: #2b2d42;
 height: 3rem;
 color: white;
 }
- .ani-images img{
+ img{
    
-    width: 15%;
+    width: 30%;
   }
 .ani-container .ani a {
     color: black;
@@ -25,13 +25,10 @@ color: white;
 section {
     display: grid;   
 }
-span {
+.anime-titles{
     background-color: #dc3545;
     color: white;
-    width: 15%;
-    height: auto;
-    margin-bottom: 10px;
 }
-.ani-progress, .ani-episodes {
+.ani-progress, .ani-episodes{
     display: inline-block;
 }
