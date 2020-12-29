@@ -49,31 +49,44 @@ function App() {
 
   const animeEntries = data.MediaListCollection.lists[0].entries;
 
-  // if (media.nextAiringEpisode.airingAt === null) return 
-  // animeTime.map((item) => <div className="Time" key={item.id}> {item.media.nextAiringEpisode.airingAt}</div>);
+  const generateDayOfWeek = (timestamp) => {
+    console.log({ timestamp }); 
+    var a = new Date(timestamp*1000);
+    console.log({ timestamp });
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var dayOfWeek = days[a.getDay()] 
+    console.log({ timestamp });
+    return dayOfWeek
+    
+  };
 
-  
-  return (
+    
+    return (
     <>
     <section>
     <h1 className="header-container">Welcome to ani-chart</h1>
-      <div>
-
+      <div className="overall-container">
       {animeEntries && animeEntries.map(({ media, progress, id }) => (
+        <>
+        
         <span key={id}>
-          <img src={media.coverImage.large} />
-          <div classNme="ani-titles">{media.title.english}</div>
+        <div>{media.nextAiringEpisode ? generateDayOfWeek(media.nextAiringEpisode.airingAt) :null }</div>
+        <div>{media.nextAiringEpisode === null ? "Finished Airing" : null}</div> 
+          <img src={media.coverImage.large} alt="broken link"/>
+          <div className="ani-titles">{media.title.english}</div>
           <div className="ani-progress">{progress}</div>/
           <div className="ani-episodes">{media.episodes}</div>
-          <div>{media.nextAiringEpisode && media.nextAiringEpisode.airingAt}</div>
         </span>
+        </>
       ))}
       </div>
        </section>
     </>
-    
   );
 }
+
+
+
 export default App;
 
 

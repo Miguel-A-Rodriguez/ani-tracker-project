@@ -32,3 +32,7 @@ section {
 .ani-progress, .ani-episodes{
     display: inline-block;
 }
+.overall-container {
+    display: flex;
+    
+}
