@@ -11,28 +11,45 @@ color: white;
 }
  img{
    
-    width: 30%;
+    width: 40%;
   }
 .ani-container .ani a {
     color: black;
 }
 
-.login-comp {
-    float: right;
-    margin-top: 10px;
-
-}
-section {
-    display: grid;   
-}
-.anime-titles{
-    background-color: #dc3545;
-    color: white;
-}
 .ani-progress, .ani-episodes{
     display: inline-block;
+    height: auto;
+    overflow: hidden;
+}
+.dates {
+    font-size: 18px;
+    margin-bottom: .5rem;
+}
+
+.airing {
+    background-color: #dc3545;
+    width: 8rem;
+    height: auto;
+    display: block;
+    color: white;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.finished {
+    background-color: #6c757d;
+    width: 8rem;
+    height: auto;
+    display: block;
+    color: white;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: solid 2px #6c757d;
+}
+.finished-cards, .airing-cards {
+    border: solid 1rem #6c757d;
 }
 .overall-container {
-    display: flex;
-    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }

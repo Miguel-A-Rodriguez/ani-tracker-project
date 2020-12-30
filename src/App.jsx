@@ -53,7 +53,7 @@ function App() {
     console.log({ timestamp }); 
     var a = new Date(timestamp*1000);
     console.log({ timestamp });
-    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var days = ['Airs Sundays','Airs Mondays','Airs Tuesdays','Airs Wednesdays','Airs Thursdays','Airs Fridays','Airs Saturdays'];
     var dayOfWeek = days[a.getDay()] 
     console.log({ timestamp });
     return dayOfWeek
@@ -70,12 +70,17 @@ function App() {
         <>
         
         <span key={id}>
+    
+      <div className="dates">
         <div>{media.nextAiringEpisode ? generateDayOfWeek(media.nextAiringEpisode.airingAt) :null }</div>
         <div>{media.nextAiringEpisode === null ? "Finished Airing" : null}</div> 
+      </div>
           <img src={media.coverImage.large} alt="broken link"/>
+      <div className= {media.nextAiringEpisode === null ? 'finished' : 'airing'}> 
           <div className="ani-titles">{media.title.english}</div>
-          <div className="ani-progress">{progress}</div>/
+          <div className="ani-progress">{progress}/</div>
           <div className="ani-episodes">{media.episodes}</div>
+      </div>
         </span>
         </>
       ))}
