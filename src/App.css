@@ -11,7 +11,7 @@ color: white;
 }
  img{
    
-    width: 40%;
+    width: 45%;
   }
 .ani-container .ani a {
     color: black;
@@ -29,27 +29,38 @@ color: white;
 
 .airing {
     background-color: #dc3545;
-    width: 8rem;
+    width: 8.8rem;
     height: auto;
     display: block;
     color: white;
     margin-bottom: 1rem;
     overflow: hidden;
+
+    border: solid 1px #dc3545;
+    border-radius: 4px;
+     background: #dc3545;
+    padding: 1px;
 }
 .finished {
     background-color: #6c757d;
-    width: 8rem;
+    width: 8.8rem;
     height: auto;
     display: block;
     color: white;
     margin-bottom: 1rem;
     overflow: hidden;
-    border: solid 2px #6c757d;
+    
+    border: solid 1px #6c757d;
+    border-radius: 4px;
+     background: #6c757d;
+    padding: 1px;
+    
 }
-.finished-cards, .airing-cards {
-    border: solid 1rem #6c757d;
-}
+
 .overall-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+*{
+    font-family: Verdana, sans-serif;  
 }

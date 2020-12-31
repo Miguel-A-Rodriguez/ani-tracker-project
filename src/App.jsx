@@ -31,6 +31,7 @@ lists {
       nextAiringEpisode{
 			airingAt
 			}
+      siteUrl
     }
   }
 }
@@ -75,12 +76,17 @@ function App() {
         <div>{media.nextAiringEpisode ? generateDayOfWeek(media.nextAiringEpisode.airingAt) :null }</div>
         <div>{media.nextAiringEpisode === null ? "Finished Airing" : null}</div> 
       </div>
+    <a href={media.siteUrl}>
           <img src={media.coverImage.large} alt="broken link"/>
+    </a>
+          
+    <a href={media.siteUrl}>
       <div className= {media.nextAiringEpisode === null ? 'finished' : 'airing'}> 
           <div className="ani-titles">{media.title.english}</div>
           <div className="ani-progress">{progress}/</div>
           <div className="ani-episodes">{media.episodes}</div>
       </div>
+      </a>
         </span>
         </>
       ))}
