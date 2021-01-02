@@ -9,7 +9,6 @@ import { gql, useQuery } from '@apollo/client';
 import React from 'react';
 
 
-
 const query = gql`
 {
   MediaListCollection(userId: 847462, type: ANIME) {

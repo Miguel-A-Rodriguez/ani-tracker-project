@@ -8,10 +8,19 @@ a:hover, a:active { text-decoration: none; }
 background-color: #2b2d42;
 height: 3rem;
 color: white;
+padding-top: 1rem;
+}
+.header-container h1 {
+    padding-top: 5px; 
+}
+span {
+    overflow: hidden;
+    max-width: 60%;
+    height: auto;
 }
  img{
    
-    width: 45%;
+    max-width: auto;
   }
 .ani-container .ani a {
     color: black;
@@ -29,7 +38,7 @@ color: white;
 
 .airing {
     background-color: #dc3545;
-    width: 8.8rem;
+    width: auto;
     height: auto;
     display: block;
     color: white;
@@ -43,7 +52,7 @@ color: white;
 }
 .finished {
     background-color: #6c757d;
-    width: 8.8rem;
+    width: auto;
     height: auto;
     display: block;
     color: white;
@@ -53,7 +62,7 @@ color: white;
     border: solid 1px #6c757d;
     border-radius: 4px;
      background: #6c757d;
-    padding: 1px;
+    padding: 8px;
     
 }
 
@@ -64,3 +73,10 @@ color: white;
 *{
     font-family: Verdana, sans-serif;  
 }
+@media all and (max-width: 1024px) {
+    max-width: auto;
+  };
+  
+  @media all and (max-width: 568px) {
+ 
+  };
