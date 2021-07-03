@@ -8,7 +8,11 @@ a:hover, a:active { text-decoration: none; }
 background-color: #2b2d42;
 height: 3rem;
 color: white;
-padding-top: 1rem;
+padding: 0;
+margin: 0;
+text-align: left;
+padding-left: 15px;
+padding-top: 10px;
 }
 .header-container h1 {
     padding-top: 5px; 
@@ -19,13 +23,25 @@ span {
     height: auto;
 }
  img{
-   
-    max-width: auto;
+   max-height: 300px;
+    /* max-width: 100%; */
+    width: 100%;
+  }
+  h2{
+      margin-left: 15px;
+      font-size: 32px;
   }
 .ani-container .ani a {
     color: black;
 }
-
+.card-img-text-container-finished{
+    border: solid 2px grey;
+    border-radius: 4px;
+}
+.card-img-text-container-still-airing{
+    border: solid 2px #dc3545;
+    border-radius: 4px;
+}
 .ani-progress, .ani-episodes{
     display: inline-block;
     height: auto;
@@ -38,45 +54,142 @@ span {
 
 .airing {
     background-color: #dc3545;
+    background: #dc3545;
     width: auto;
+    min-height: 100px;
     height: auto;
     display: block;
     color: white;
-    margin-bottom: 1rem;
     overflow: hidden;
-
-    border: solid 1px #dc3545;
-    border-radius: 4px;
-     background: #dc3545;
-    padding: 1px;
+    padding: 5px;
+    padding-bottom: 0;
 }
 .finished {
-    background-color: #6c757d;
     width: auto;
+    min-height: 100px;
     height: auto;
     display: block;
     color: white;
-    margin-bottom: 1rem;
     overflow: hidden;
-    
-    border: solid 1px #6c757d;
-    border-radius: 4px;
-     background: #6c757d;
-    padding: 8px;
-    
+    padding: 5px;
+    padding-bottom: 0;
+    background: #6c757d;
+    background-color: #6c757d;
 }
 
-.overall-container {
+.finished-airing-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.still-airing-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 15px;
+}
+.still-airing-items{
+    min-width: 200px;
+    min-width: 300px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.finished-airing-items{
+    min-width: 200px;
+    min-width: 300px;
+    min-height: 300px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.still-airing-items:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+.finished-airing-items:hover{
+    cursor: pointer;
+    opacity: 80%;
 }
 *{
     font-family: Verdana, sans-serif;  
 }
-@media all and (max-width: 1024px) {
-    max-width: auto;
+@media all and (max-width: 1275px) {
+    *{
+        font-size: 24px;
+    }
+    h2{
+        text-align: center;
+        margin: 0;
+        margin-top: 20px;
+        font-size: 40px;
+    }
+    .finished-airing-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    }
+    .finished-airing-items{
+        min-width: 200px;
+        max-width: 300px;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .still-airing-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+        }
+        .still-airing-items{
+            min-width: 200px;
+            max-width: 300px;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
   };
   
-  @media all and (max-width: 568px) {
- 
+  @media all and (max-width: 624px) {
+
+    .finished-airing-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+        width: 100%;
+        }
+        .finished-airing-items{
+            min-width: 200px;
+            max-width: 300px;
+            width: 500px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .still-airing-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-left: 15px;
+            margin-right: 15px;
+            width: 100%;
+            }
+            .still-airing-items{
+                min-width: 300px;
+                max-width: 400px;
+                width: 100%;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
   };

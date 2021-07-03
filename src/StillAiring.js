@@ -4,11 +4,11 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-indent */
 
-import './App.css';
 import { gql, useQuery } from '@apollo/client';
-import React from 'react';
-import StillAiring from './StillAiring';
-import FinishedAiring from './FinishedAiring';
+import React, { useState } from 'react';
+import './App.css';
+
+
 const query = gql`
 {
   MediaListCollection(userId: 847462, type: ANIME) {
@@ -42,20 +42,65 @@ user {
 
 },
 `;
-function App() {
+function StillAiring() {
+  const [visible, setVisible] = useState(true);
+  const { loading, data } = useQuery(query);
+  if (loading) return <p>Loading Anime ...</p>;
+  console.log(data);
 
+  
+  const animeEntries = data.MediaListCollection.lists[0].entries;
+
+  const generateDayOfWeek = (timestamp) => {
+    console.log({ timestamp }); 
+    var a = new Date(timestamp*1000);
+    console.log({ timestamp });
+    var days = ['Airs Sundays','Airs Mondays','Airs Tuesdays','Airs Wednesdays','Airs Thursdays','Airs Fridays','Airs Saturdays'];
+    var dayOfWeek = days[a.getDay()] 
+    console.log({ timestamp });
+    return dayOfWeek
+    
+  };
+  
     return (
     <>
-    <h1 className="header-container">Anime-Schedule</h1>
-     <StillAiring/>
-     <FinishedAiring/>
+    <h2>Now Airing</h2>
+      <div className="still-airing-container">
+      {animeEntries && animeEntries.map(({ media, progress, id }) => (
+        <>
+    {media.nextAiringEpisode ? visible && (
+        <span className="still-airing-items" key={ id }>
+
+      <div className="dates">
+        <div>{media.nextAiringEpisode ? generateDayOfWeek(media.nextAiringEpisode.airingAt) :null }</div>
+      </div>
+         <aside className="card-img-text-container-still-airing">
+            <a href={media.siteUrl}>
+                  <img src={media.coverImage.large} alt="broken link"/>
+            </a>
+            <a href={media.siteUrl}>
+              <div className= {media.nextAiringEpisode ?  'airing' : null}>
+                  <div className="ani-titles">{media.title.english}</div>
+                  <div className="ani-progress">{progress}/</div>
+                  <div className="ani-episodes">{media.episodes}</div>
+              </div>
+              </a>
+         </aside>
+        </span>
+        ): null}
+        </>
+      ))
+      }
+      </div>
     </>
+    
   );
+  
 }
 
 
 
-export default App;
+export default StillAiring;
 
 
   // /// Images ///

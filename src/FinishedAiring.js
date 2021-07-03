@@ -4,11 +4,11 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-indent */
 
-import './App.css';
 import { gql, useQuery } from '@apollo/client';
-import React from 'react';
-import StillAiring from './StillAiring';
-import FinishedAiring from './FinishedAiring';
+import React, { useState } from 'react';
+import './App.css';
+
+
 const query = gql`
 {
   MediaListCollection(userId: 847462, type: ANIME) {
@@ -42,20 +42,57 @@ user {
 
 },
 `;
-function App() {
+function FinishedAiring() {
+  const [visible, setVisible] = useState(true)
+  const { data } = useQuery(query);
+  console.log(data);
 
+  const animeEntries = data.MediaListCollection.lists[0].entries;
+
+    
     return (
     <>
-    <h1 className="header-container">Anime-Schedule</h1>
-     <StillAiring/>
-     <FinishedAiring/>
+    <h2 id="finished-airing-title">Finished Airing</h2>
+    <section>
+      <div className="finished-airing-container">
+      {animeEntries && animeEntries.map(({ media, progress, id }) => (
+        <>
+
+{media.nextAiringEpisode === null ? visible && (
+      <span className="finished-airing-items" key={id}>
+        
+      <div className="dates">
+        
+        {/* <div>{media.nextAiringEpisode === null ? "Finished Airing" : null}</div>  */}
+        </div>
+    <aside class="card-img-text-container-finished">
+      <a href={ media.siteUrl}>
+            <img src={media.coverImage.large } alt="broken link"/>
+      
+      </a>
+      
+      <a href={media.siteUrl}>
+        <div className= {media.nextAiringEpisode === null ? 'finished' : null}>
+            <div className="ani-titles">{ media.title.english}</div>
+            <div className="ani-progress">{ progress}/</div>
+            <div className="ani-episodes">{ media.episodes}</div>
+        </div>
+      </a>
+      </aside>
+        </span>
+        ): null}
+        </>
+      ))
+      }
+      </div>
+       </section>
     </>
   );
 }
 
 
 
-export default App;
+export default FinishedAiring;
 
 
   // /// Images ///

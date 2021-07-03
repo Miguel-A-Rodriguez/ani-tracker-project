@@ -4,11 +4,11 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-indent */
 
-import './App.css';
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
-import StillAiring from './StillAiring';
-import FinishedAiring from './FinishedAiring';
+import './App.css';
+
+
 const query = gql`
 {
   MediaListCollection(userId: 847462, type: ANIME) {
@@ -43,12 +43,66 @@ user {
 },
 `;
 function App() {
+  const { loading, data } = useQuery(query);
+  if (loading) return <p>Loading Anime ...</p>;
+  console.log(data);
 
+  const animeEntries = data.MediaListCollection.lists[0].entries;
+
+  const generateDayOfWeek = (timestamp) => {
+    console.log({ timestamp }); 
+    var a = new Date(timestamp*1000);
+    console.log({ timestamp });
+    var days = ['Airs Sundays','Airs Mondays','Airs Tuesdays','Airs Wednesdays','Airs Thursdays','Airs Fridays','Airs Saturdays'];
+    var dayOfWeek = days[a.getDay()] 
+    console.log({ timestamp });
+    return dayOfWeek
+    
+  };
+    
     return (
     <>
-    <h1 className="header-container">Anime-Schedule</h1>
-     <StillAiring/>
-     <FinishedAiring/>
+    <section>
+    <h1 className="header-container">Welcome to ani-chart</h1>
+      <div className="overall-container">
+      {animeEntries && animeEntries.map(({ media, progress, id }) => (
+        <>
+
+        <span key={id}>
+        
+      <div className="dates">
+        <div>{media.nextAiringEpisode ? generateDayOfWeek(media.nextAiringEpisode.airingAt) :null }</div>
+        <div>{media.nextAiringEpisode === null ? "Finished Airing" : null}</div> 
+      </div>
+    <a href={media.siteUrl}>
+          <img src={media.coverImage.large} alt="broken link"/>
+          {/* <img src={media.nextAiringEpisode === null ? media.coverImage.large : null } alt="broken link"/> 
+          will not display image of anime who are still airing 
+          */}
+    </a>
+          
+    <a href={media.siteUrl}>
+      <div className= {media.nextAiringEpisode === null ? 'finished' : 'airing'}> 
+          <div className="ani-titles">{media.title.english}</div>
+          {/* <div className="ani-titles">{media.nextAiringEpisode === null ? media.title.english : null}</div> 
+          if anime is still airing it will not render the title of said still airing anime
+          */}
+          <div className="ani-progress">{progress}/</div>
+          {/* <div className="ani-progress">{media.nextAiringEpisode === null ? progress : null}/</div> 
+          if anime is still airing do not render the progress
+          */}
+          <div className="ani-episodes">{media.episodes}</div>
+          {/* <div className="ani-episodes">{media.nextAiringEpisode === null ? media.episodes : null}</div>
+          if anime is still airing it will not render the 
+          */}
+      </div>
+      </a>
+        </span>
+        </>
+      ))
+      }
+      </div>
+       </section>
     </>
   );
 }
