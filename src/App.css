@@ -105,11 +105,11 @@ span {
 }
 .still-airing-items:hover{
     cursor: pointer;
-    opacity: 90%;
+    /* opacity: 90%; */
 }
 .finished-airing-items:hover{
     cursor: pointer;
-    opacity: 90%;
+    /* opacity: 90%; */
 }
 *{
     font-family: Verdana, sans-serif;  
