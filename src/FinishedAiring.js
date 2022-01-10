@@ -44,10 +44,13 @@ user {
 `;
 function FinishedAiring() {
   const [visible, setVisible] = useState(true)
-  const { data } = useQuery(query);
+  // const { data } = useQuery(query);
+  // console.log(data);
+  const { loading, data } = useQuery(query);
+  if (loading) return <p></p>;
   console.log(data);
 
-  const animeEntries = data.MediaListCollection.lists[0].entries;
+  const animeEntries = data.MediaListCollection.lists[0].entries ?? [];
 
     
     return (

@@ -49,7 +49,7 @@ function StillAiring() {
   console.log(data);
 
   
-  const animeEntries = data.MediaListCollection.lists[0].entries;
+  const animeEntries = data.MediaListCollection.lists[0].entries ?? [];
 
   const generateDayOfWeek = (timestamp) => {
     console.log({ timestamp }); 

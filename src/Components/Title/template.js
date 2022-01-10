@@ -67,7 +67,8 @@ function App() {
       <div className="overall-container">
       {animeEntries && animeEntries.map(({ media, progress, id }) => (
         <>
-
+{/* ({ ... }) => media.nextAiringEpisode && ( render data here ) : ( )
+try to rebuild so that still airing anime are first rendered and in the else finished airing anime are rendered */}
         <span key={id}>
         
       <div className="dates">
@@ -76,25 +77,15 @@ function App() {
       </div>
     <a href={media.siteUrl}>
           <img src={media.coverImage.large} alt="broken link"/>
-          {/* <img src={media.nextAiringEpisode === null ? media.coverImage.large : null } alt="broken link"/> 
-          will not display image of anime who are still airing 
-          */}
     </a>
-          
+    
     <a href={media.siteUrl}>
       <div className= {media.nextAiringEpisode === null ? 'finished' : 'airing'}> 
           <div className="ani-titles">{media.title.english}</div>
-          {/* <div className="ani-titles">{media.nextAiringEpisode === null ? media.title.english : null}</div> 
-          if anime is still airing it will not render the title of said still airing anime
-          */}
           <div className="ani-progress">{progress}/</div>
-          {/* <div className="ani-progress">{media.nextAiringEpisode === null ? progress : null}/</div> 
-          if anime is still airing do not render the progress
-          */}
+
           <div className="ani-episodes">{media.episodes}</div>
-          {/* <div className="ani-episodes">{media.nextAiringEpisode === null ? media.episodes : null}</div>
-          if anime is still airing it will not render the 
-          */}
+
       </div>
       </a>
         </span>
