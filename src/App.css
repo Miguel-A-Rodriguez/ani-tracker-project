@@ -103,13 +103,14 @@ span {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.still-airing-items:hover{
+
+.still-airing-items aside:hover{
     cursor: pointer;
-    /* opacity: 90%; */
+    opacity: 80%;
 }
-.finished-airing-items:hover{
+.finished-airing-items aside:hover{
     cursor: pointer;
-    /* opacity: 90%; */
+    opacity: 80%;
 }
 *{
     font-family: Verdana, sans-serif;  
