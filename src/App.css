@@ -90,15 +90,15 @@ span {
 }
 .still-airing-items{
     min-width: 200px;
-    min-width: 300px;
+    min-width: 250px;
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .finished-airing-items{
     min-width: 200px;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 250px;
+    min-height: 200px;
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
